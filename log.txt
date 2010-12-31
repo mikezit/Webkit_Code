@@ -1,0 +1,1 @@
+gdb --annotate=3 /data/WebKit-r57509_back/WebKit-r57509/WebKitBuild/Debug/bin/QtLauncher 

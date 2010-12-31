@@ -1,0 +1,1840 @@
+<html><head><!--STATUS OK-->
+
+
+<meta http-equiv="content-type" content="text/html; charset=GB2312"><title>计算机图形变换的矩阵表示形式_Memory and Cold Boot Attacks_百度空间      </title>
+
+<style type="text/css">
+
+.error{color:#FF0000;font-size:12px}
+.shareUser,.shareLastEditor{line-height:20px;color:#666666;text-align:left}
+.shareLastEditor{margin:5px 0 8px;}
+
+
+
+
+
+	
+
+
+
+
+
+</style>
+
+<script type="text/javascript" src="matrix-graphic_files/global.js"></script>
+<script type="text/javascript" src="matrix-graphic_files/tangram-1.js"></script>
+
+
+<script type="text/javascript">
+var Session = {
+    isLogin: ! true,
+    isHost: "",
+    userName: "xdjsj",   
+    userPortrait:'740378646a736aff02',
+    spaceURL: "/xdjsj",
+    spBasicURL:"xdjsj",
+    spBasicURLEnc:"xdjsj",
+    visitorName:    "",
+    visitorPortrait:'00000000',
+    isActive: '',   
+    visitorURL: "/index.html",        // 
+    pageURL: "http://hi.baidu.com/xdjsj/blog/item/184b7417fb98e3064a90a7be%2Ehtml",    
+    refer: "http://www.google.com.hk/search?hl=zh-CN&safe=strict&q=%E7%9F%A9%E9%98%B5+++%E5%9B%BE%E5%BD%A2%E5%8F%98%E6%8D%A2&aq=o&aqi=&aql=&oq=&gs_rfai=",
+    spToken: 'e422fea0d19c2d84f3c9bfdb6c7ef36b', 
+    spFriendDomain: 'http://frd.baidu.com',
+    spSpaceDomain: 'http://hi.baidu.com',
+    spPortraitDomain: '',
+    spSpaceStaticDomain: 'http://hi.baidu.com' 
+
+    ,isDrag:  false  
+    ,isProfile:  false   
+    };
+</script>
+
+<script language="javascript" src="matrix-graphic_files/dialog.js"></script>
+
+<script type="text/javascript" src="matrix-graphic_files/BdEditor-mined.js"></script>
+
+<script type="text/javascript" src="matrix-graphic_files/antiSpam.js"></script>
+
+<script language="JavaScript" src="matrix-graphic_files/g_spjs.js"></script>
+
+<script language="javascript">
+
+<!--
+
+
+(function(){var a=109;function c(d){var f="nslog__"+(new Date()).getTime();var e=window[f]=new Image();e.onload=(e.onerror=function(){window[f]=null});e.src="http://nsclick.baidu.com/v.gif?pid="+a+"&url="+encodeURIComponent(d)+"&type=0&_t="+Math.random();e=null}function b(g){g=g||event;var f=g.srcElement||g.target;if(f.nodeType!=1){f=f.parentNode}while(f&&f.tagName&&f.tagName.toUpperCase()!="A"){f=f.parentNode}if(f&&f.tagName&&f.tagName.toUpperCase()=="A"){if(f.protocol.indexOf("http")==0&&!/^([\w-]+\.)*?baidu\.com/i.test(f.host)){var d=f.href;setTimeout(function(){c(d)},1)}}f=null}if(document.attachEvent){document.attachEvent("onmousedown",b);window.attachEvent("onunload",function(){document.detachEvent("onmousedown",b)})}else{document.addEventListener("mousedown",b,false);window.addEventListener("unload",function(){document.removeEventListener("mousedown",b,false)},false)}})();
+
+var allkey="";
+
+var i=0;
+
+var flag=0;
+
+function setpv(allnum)
+
+{
+
+	var num = allnum.split('_');
+
+	document.getElementById("result").innerHTML=num[0];
+
+}
+
+
+
+function checkMail(s)
+
+{
+
+  	var pattern=/\w+@\w+\.[a-z]+/;
+
+  	if(pattern.test(s))
+
+    {
+
+       return true;
+
+    }
+
+  	else
+
+   {
+
+      return false;
+
+   }
+
+}
+
+
+
+
+
+function checkeandu(eanduid)
+
+{
+
+	var eanduvalue=G(eanduid).value;
+
+	var len=bytes(eanduvalue);
+
+	if(len>128)
+
+	{
+
+		showErr(2,"您输入的网址或邮箱太长，请保持在128字节以内。");
+
+		return false;
+
+	}
+
+	else
+
+	{
+
+		 return true;
+
+	}
+
+
+
+}
+
+
+
+function cmtdel(str)
+
+{
+
+	var pop=new Popup({ contentType:3,isReloadOnClose:false,width:340,height:80});
+
+	pop.setContent("title","删除评论");
+
+	pop.setContent("confirmCon","您确定要彻底删除这条评论吗？");
+
+	pop.setContent("callBack",delCallback2);
+
+	pop.setContent("parameter",{fid:str,popup:pop});
+
+	pop.build();
+
+	pop.show();
+
+	return false;
+
+}
+
+function delCallback2(para)
+
+{
+
+	var o_pop=para["popup"];
+
+	o_pop.config.contentType=1;
+
+	o_pop.setContent("contentUrl","");
+
+	o_pop.reBuild();
+
+	G(para["fid"]).target=o_pop.iframeIdName;
+
+	eval("document."+para["fid"]).submit();
+
+}
+
+
+
+String.prototype.byteLength = function() {
+
+    return this.replace(/[^\u0000-\u007f]/g,"\u0061\u0061").length;
+
+}
+
+
+
+function checkname(strid)
+
+{
+
+	var ele=document.getElementById(strid);
+
+	var len=bytes(ele.value);
+
+	if(len>49)
+
+	{
+
+		showErr(1,"您输入的姓名太长，请保持在49字节以内。");
+
+		return false;
+
+	}
+
+	else
+
+	{
+
+		if(len==0)
+
+		{
+
+			document.getElementById(strid).value="匿名网友";
+
+		}
+
+		 return true;
+
+	}
+
+
+
+}
+
+
+
+function checktext(textid)
+
+{
+
+        var tempStr='';
+
+        var isLightFont=false;
+
+		if(editor&&textid=="spBlogCmtText"){
+
+			//document.getElementById("spBlogCmtText").value=editor.getHtml();
+
+			tempStr=editor.getHtml();
+
+			tempStr=tempStr.replace(/<span style="filter:glow\(color=#([0-9a-z]{3,6}),strength=2\);height:0px;color:#([0-9a-z]{3,6})">/ig,'');
+
+			tempStr=tempStr.replace(/<\/span>/ig,'');
+
+			document.getElementById("spBlogCmtText").value=tempStr;
+
+            isLightFont=!(tempStr==editor.getHtml());
+
+        }
+
+		document.getElementById(textid).value=trimlr(textid);
+
+		var str=trimrn(textid);
+
+		len=str.length;
+
+		if(len==0 || ((/^[\s,　]+$/gi).test(str)) )
+
+		{
+
+			showErr(3,"您必须输入评论内容，请检查。");
+
+			return false;
+
+		}
+
+		else
+
+        {
+
+                len=str.byteLength();
+
+                var maxLength=isLightFont?916:1000;
+
+				if(len > maxLength)
+
+				{
+
+					showErr(3,"您输入的评论内容太长，请保持在500字以内。");
+
+					return false;
+
+				}
+
+				if(editor&&textid=="spBlogCmtText"){
+
+					document.getElementById("spBlogCmtText").value=editor.getHtml();
+
+					document.getElementById(textid).value=trimlr(textid);
+
+				}
+
+
+
+			return true;
+
+		}
+
+}
+
+
+
+function showErr(index,str)
+
+{
+
+	G(index+"_err").style.display="";
+
+	G(index+"_err_con").innerHTML=str;
+
+}
+
+function hidErr(index)
+
+{
+
+	G(index+"_err").style.display="none";
+
+	G(index+"_err_con").innerHTML="";
+
+}
+
+
+
+function alertPop(tit,con)
+
+{
+
+	var pop=new Popup({ contentType:4,isReloadOnClose:false,width:340,height:80});
+
+	pop.setContent("title",tit);
+
+	pop.setContent("alertCon",con);
+
+	pop.build();
+
+	pop.show();
+
+}
+
+
+
+function cmtfull()
+
+{
+
+	var cnum=0;
+
+	if(cnum>=50000)
+
+	{
+
+		alertPop("发表评论","单篇日志评论数最多为50000条.");
+
+		return false;
+
+	}
+
+	else
+
+	{
+
+		return true;
+
+	}
+
+}
+
+
+
+function checkcmtform()
+
+{
+
+	if(checkname("spBlogCmtor")&&checkeandu("spBlogCmtURL")&&checktext("spBlogCmtText")&&cmtfull())
+
+	{
+
+		submitForm();
+
+		return true;
+
+	}
+
+	else
+
+	{
+
+		return false;
+
+	}
+
+}
+
+
+
+var g_pop=null;
+
+function submitForm()
+
+{
+
+	g_pop=new Popup({ contentType:1,isReloadOnClose:false,width:340,height:80});
+
+	g_pop.setContent("title","添加评论");
+
+	g_pop.setContent("contentUrl","");
+
+	g_pop.setContent("someDisabledBtn","btn_ok");
+
+	g_pop.build();
+
+	G("popFormSubmit").target=g_pop.iframeIdName;
+
+	g_pop.show();
+
+}
+
+
+
+function g_close_pop()
+
+{
+
+	g_pop.close();
+
+}
+
+
+
+function formatonlinpic()
+
+{
+
+var picobj=document.getElementsByName("onlinepic");
+
+var picnum=picobj.length;
+
+
+
+	for(var i=0;i<picnum;i++)
+
+	{
+
+		if(picobj[i].width>200)
+
+		{
+
+			picobj[i].width=200;
+
+		}
+
+		if(picobj[i].height>200)
+
+		{
+
+			picobj[i].height=200;
+
+		}
+
+	}
+
+    try{document.getElementById("btn_ok").disabled = "";}catch(e){}
+
+}
+
+
+
+function addToFavor(){
+
+var blogTitle='计算机图形变换的矩阵表示形式'.replace(/&#39;/g,'\'');
+
+window.open('http://cang.baidu.com/do/add?it='+encodeURIComponent(blogTitle+'_百度空间')+'&iu='+encodeURIComponent(location.href)+'&fr=sp#nw=1','_s','scrollbars=no,width=600,height=450,right=75,top=20,status=no,resizable=yes');
+
+return false;
+
+}
+
+function addToiTieba(){
+    var blogTitle='计算机图形变换的矩阵表示形式'.replace(/&#39;/g,'\'');
+    window.open('http://tieba.baidu.com/i/sys/share?link='+encodeURIComponent('http://hi.baidu.com/xdjsj/blog/item/184b7417fb98e3064a90a7be.html')+'&type=text&title='+encodeURIComponent(blogTitle)+'&content=');
+}
+
+function addToShare(){
+    window.open('http://apps.hi.baidu.com/share/?url='+encodeURIComponent('http://hi.baidu.com/xdjsj/blog/item/184b7417fb98e3064a90a7be.html'));
+}
+
+
+var isIE = /*@cc_on!@*/false;
+
+function tracker(did,a){
+
+	return function(){
+
+		var t=new Date().getTime();
+
+		var href=a.href;
+
+        if(isIE){
+
+            var r = /href\s*=\s*("|')?([^\s]*)\1/gi;
+
+            if(r.test(a.outerHTML))
+
+                href = RegExp.$2;
+
+        }
+
+        new Image().src = "http://hi.baidu.com/sys/statlog/1.gif?m=" + did + "&v=" + encodeURIComponent(href) + "&c=" + encodeURIComponent(location.href) + "&t="+t;
+
+	}
+
+}
+
+
+
+function tracker_init(did){
+
+	var _s=document.getElementById(did);
+
+	var as = _s.getElementsByTagName('A');
+
+	for(var i = 0, j = as.length; i < j; i ++){
+
+		var a = as[i];
+
+		if(isIE){
+
+			a.attachEvent("onclick", tracker(did,a));
+
+		}else{
+
+			a.addEventListener("click", tracker(did,a), false);
+
+		}
+
+	}
+
+}
+
+
+
+
+
+/* some functions for cmt-reply */
+        var g_cmtorInfo = [];
+        function goCmtReply(cmtPorID){
+            cmtreply(g_cmtorInfo[cmtPorID],cmtPorID);
+        }
+		function cmtreply(cmtName,cmtPorID)
+
+		{
+
+			cmtName=cmtName.replace(/<|>/g,"");
+
+			window.location.hash="#send";
+
+			var cmtForm=document.form1;
+
+			cmtForm.cm.value="3";
+
+			if(!cmtForm.spReferTarget)
+
+			{
+
+				var ipt=document.createElement("input");
+
+				ipt.type="hidden";
+
+				ipt.name="spReferTarget";
+
+				ipt.value=cmtPorID;
+
+				cmtForm.appendChild(ipt);
+
+			}else cmtForm.spReferTarget.value=cmtPorID;
+
+
+
+
+
+			 //G("reTitle").innerHTML="回复"+cmtName+"：";
+
+			 G("cancleReLink").style.display="";
+
+			 cmtForm.btn_ok.value="回复评论";
+
+
+
+
+
+			 try{
+
+				editor.window.focus();
+
+                editor.window.document.body.innerHTML="回复"+cmtName+"：";
+
+
+
+                var w = editor.window;
+
+				if(w.getSelection){
+
+					var d = w.document;
+
+					var s = w.getSelection();
+
+					var r = d.createRange();
+
+					r.setStartAfter(d.body.firstChild);
+
+					r.setEndAfter(d.body.lastChild);
+
+					s.removeAllRanges();
+
+					s.addRange(r);
+
+				}
+
+			}catch(e){
+
+			 		try{
+
+				 		cmtForm.getElementsByTagName("textarea")[0].focus();
+
+				 		cmtForm.getElementsByTagName("textarea")[0].value="回复"+cmtName+"：";
+
+				 	}catch(e){}
+
+			}
+
+		}
+
+
+
+		function canclereply()
+
+		{
+
+			var cmtForm=document.form1;
+
+			cmtForm.cm.value="1";
+
+			try{cmtForm.removeChild(cmtForm.spReferTarget);}catch(e){}
+
+			/*
+
+			try{
+
+					var cmt=cmtForm.getElementsByTagName("textarea")[0]
+
+					cmt.value="";
+
+					cmt.focus();
+
+			}catch(e){}
+
+			*/
+
+
+
+			try{
+
+					var ed=editor.window.document.body;
+
+					ed.innerHTML="";
+
+					editor.window.focus();
+
+				}catch(e){
+
+					var cmt=cmtForm.getElementsByTagName("textarea")[0];
+
+					cmt.value="";
+
+					cmt.focus();
+
+			}
+
+
+
+			G("cancleReLink").style.display="none";
+
+			cmtForm.btn_ok.value="发表评论";
+
+		}
+
+
+
+		function gotoreply()
+
+		{//to checking whether reply cmt
+
+			if( window.location.hash.indexOf("&re=1")<0) return;
+
+			var cmtID=window.location.hash.split("&")[0].replace("#","");
+
+			var cmtlinks=document.getElementsByTagName("a");
+
+			for(var i=0,n=cmtlinks.length;i<n;i++)
+
+			{
+
+				if(cmtlinks[i].name==cmtID){ var rename=cmtlinks[i].getAttribute("rename");  repid=cmtlinks[i].getAttribute("repid"); break;}
+
+			}
+
+			if(typeof(rename)!="undefined"){
+
+				cmtreply(rename, repid);
+
+			}
+
+		}
+
+
+
+//-->
+
+</script>
+
+
+<script type="text/javascript">
+
+    /*<![CDATA[*/
+
+
+
+window.onerror=function(){return true;}
+
+
+
+var RelatedDocData = null, GetAndEval = false;
+
+(function(){
+
+	var xhr = BdAjax.getXHR();
+
+	if(xhr == null){
+
+		RelatedDocData = -1;
+
+		return;
+
+	}
+
+
+
+	xhr.open("GET", "/sys/search?type=8&word=%BC%C6%CB%E3%BB%FA%CD%BC%D0%CE%B1%E4%BB%BB%B5%C4%BE%D8%D5%F3%B1%ED%CA%BE%D0%CE%CA%BD&item=184b7417fb98e3064a90a7be&t=" + new Date().getTime(), true);
+
+	xhr.onreadystatechange = function(){
+
+		if(xhr.readyState == 4){
+
+			if(xhr.status == 0 || xhr.status == 200){
+
+				if(GetAndEval){
+
+					eval(xhr.responseText);
+
+				}else{
+
+					RelatedDocData = xhr.responseText;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	xhr.send(null);
+
+})();
+
+/*]]>*/
+
+</script>
+
+
+
+<script src="matrix-graphic_files/getsourceshare.html" type="text/javascript"></script><link href="matrix-graphic_files/ucard.css" rel="stylesheet" type="text/css"><script src="matrix-graphic_files/ucard.js" type="text/javascript"></script><script src="matrix-graphic_files/check_baiduhi.js" type="text/javascript"></script></head><body onload="formatonlinpic();"><iframe name="_BdPopupLayer_18w1t5-t6j8as7fyfss-z8c6r4" style="position: absolute; z-index: 65001; display: none;" id="_BdPopupLayer_18w1t5-t6j8as7fyfss-z8c6r4" frameborder="0" scrolling="no"></iframe>
+
+<center>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+if(top.location != self.location){
+	top.location = self.location;
+}
+var myref = encodeURIComponent("http://hi.baidu.com/xdjsj/blog/item/184b7417fb98e3064a90a7be%2Ehtml");
+/*]]>*/
+</script>
+<link rel="stylesheet" type="text/css" href="matrix-graphic_files/mods.css">
+
+<link rel="stylesheet" type="text/css" href="matrix-graphic_files/7ec053122fa18651f919b817.css">
+
+<link rel="stylesheet" type="text/css" href="matrix-graphic_files/space.css">
+
+<div class="userbar">
+    <div id="nav">
+        <a class="logo" href="http://hi.baidu.com/index.htm"><img src="matrix-graphic_files/logo.gif" alt="图片" border="0"></a>
+
+        <div class="manage">
+            <form action="https://passport.baidu.com/?login" method="post">
+                用户名:<input name="username" type="text">&nbsp;&nbsp; 
+                密码:<input name="password" type="password"> 
+                <input value="" style="width: 0pt; height: 0pt;" type="submit">
+                <a href="#" class="loginlink" onclick="this.parentNode.submit(); return false;">登录</a>  
+            </form> 
+            <a href="http://hi.baidu.com/reg/new" class="reglink">注册</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+		
+
+
+
+<div id="main" align="left">
+
+<!--[if IE]>
+<script>
+var objmain = document.getElementById("main");
+function updatesize(){ var bodyw = window.document.body.offsetWidth; if(bodyw <= 790) objmain.style.width="772px"; else if(bodyw >= 1016) objmain.style.width="996px"; else objmain.style.width="100%"; }
+updatesize(); window.onresize = updatesize;
+</script>
+<![endif]-->
+
+	<div id="header">
+
+	<div class="lc"><div class="rc"></div></div>
+<div class="tit"><a href="http://hi.baidu.com/xdjsj/home" class="titlink" title="xdjsj的空间 http://hi.baidu.com/xdjsj">Memory and Cold Boot Attacks</a></div>
+<div class="desc"></div>
+<div id="tabline">&nbsp;</div>
+
+	<div id="tab"><a href="http://hi.baidu.com/xdjsj/home">主页</a><a href="http://hi.baidu.com/xdjsj/blog" class="on">博客</a><a href="http://hi.baidu.com/xdjsj/album">相册</a><span>|</span><a href="http://hi.baidu.com/xdjsj/profile">个人档案</a>
+
+	<span>|</span><a href="http://hi.baidu.com/xdjsj/friends">好友</a>
+
+
+
+
+
+
+
+	</div>
+
+</div>
+
+
+
+<div class="stage">
+
+<div class="stagepad">
+
+<div style="width: 100%;">
+
+
+
+
+
+	
+
+
+
+	<table class="modth" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+	<tbody><tr><td class="modtl" width="7">&nbsp;</td>
+
+	<td class="modtc" nowrap="nowrap"><div class="modhead"><span class="modtit">查看文章</span></div></td>
+
+	<td class="modtc" align="right" nowrap="nowrap"></td>
+
+	<td class="modtr" width="7">&nbsp;</td>
+
+	</tr></tbody></table>
+
+
+
+<div id="m_blog" class="modbox" style="overflow-x: hidden;">
+
+<div class="tit">
+
+计算机图形变换的矩阵表示形式</div>
+
+<div class="date">2008年12月10日 星期三  15:05</div>
+
+
+
+
+<table style="table-layout: fixed; width: 100%;"><tbody><tr><td><div id="blog_text" class="cnt"><div class="introduction">
+<p><font size="3"><span class="math">m×n</span> 矩阵是排列在 <span class="math">m</span> 行和 <span class="math">n</span> 列中的一系列数。下图显示几个矩阵。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_007.gif"></span> </font>
+<p><font size="3">您可以通过将单个元素相加来加合两个尺寸相同的矩阵。下图显示了两个矩阵相加的示例。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_002.gif"></span> </font>
+<p><font size="3"><span class="math">m×n</span> 矩阵可与一个 <span class="math">n×p</span> 矩阵相乘，结果为一个 <span class="math">m×p</span> 矩阵。第一个矩阵的列数必须与第二个矩阵的行数相同。例如，一个 4×2 矩阵与一个 2×3 矩阵相乘，产生一个 4×3 矩阵。</font></p>
+<p><font size="3">矩阵的行列的平面点可视为矢量。例如，(2, 5) 是具有两个组件的矢量，(3, 7, 1) 是具有三个组件的矢量。两个矢量的点积定义如下：</font></p>
+<p><font size="3">(a, b) &#8226; (c, d) = ac + bd</font></p>
+<p><font size="3">(a, b, c) &#8226; (d, e, f) = ad + be + cf</font></p>
+<p><font size="3">例如，(2, 3) 和 (5, 4) 的点积是 (2)(5) + (3)(4) = 22。(2, 5, 1)
+ 和 (4, 3, 1) 的点积是 (2)(4) + (5)(3) + (1)(1) = 
+24。请注意，两个矢量的点积是数字，而不是另一个矢量。另外请注意，只有当两个矢量的组件数相同时，才能计算点积。</font></p>
+<p><font size="3">将 A(i, j) 作为矩阵 A 中第 i 行、第 j 列的项。例如，A（3, 2）是矩阵 A 中第 3 行、第 2 列的项。假定 A、B 和 C 是矩阵，且 AB = C，则 C 的项计算如下：</font></p>
+<p><font size="3">C(i, j) =（A 的第 i 行）&#8226;（B 的第 j 列）</font></p>
+<p><font size="3">下图显示了矩阵相乘的几个示例。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_006.gif"></span> </font>
+<p><font size="3">如果将平面中的点视为 1×2 矩阵，则可通过将该点乘以一个 2×2 矩阵来将该点变换。下图显示了应用于点 (2, 1) 的几个变换。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_010.gif"></span> </font>
+<p><font size="3">前图中显示的所有变换都是线性变换。某些其他变换（如平移）不是线性的，不能表示为与 2×2 
+矩阵相乘的形式。假定您要从点 (2, 1) 开始，将其旋转 90 度，在 x 方向将其平移 3 个单位，在 y 方向将其平移 4 
+个单位。可通过先使用矩阵乘法再使用矩阵加法来完成此操作。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_004.gif"></span> </font>
+<p><font size="3">后面跟一平移（与 1×2 矩阵相加）的线性变换（与 2×2 
+矩阵相乘）称为仿射变换。将仿射变换存储于一对矩阵（一个用于线性部分，一个用于平移）的替换方案是将整个变换存储于 3×3 
+矩阵。若要使其起作用，平面上的点必须存储于具有虚拟第三坐标的 1×3 矩阵中。通常的方法是使所有的第三坐标等于 1。例如，矩阵 [2 1 1] 
+代表点 (2, 1)。下图演示了表示为与单个 3×3 矩阵相乘的仿射变换（旋转 90 度；在 x 方向上平移 3 个单位，在 y 方向上平移 4
+ 个单位）。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_009.gif"></span> </font>
+<p><font size="3">在前面的示例中，点 (2, 1) 映射到了点 (2, 6)。请注意，3×3 矩阵的第三列包含数字 
+0，0，1。对于仿射变换的 3×3 矩阵而言，情况将总是如此。重要的数字是列 1 和列 2 中的 6 个数字。矩阵左上角的 2×2 
+部分表示变换的线性部分，第 3 行中的前两项表示平移。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_008.gif"></span> </font>
+<p><font size="3">在 GDI+ 中，可以在 <span target="T:System.Drawing.Drawing2D.Matrix" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.aspx"><font color="#0033cc">Matrix</font></a></span> 对象中存储仿射变换。由于表示仿射变换的矩阵的第三列总是（0，0，1），因此在构造 <span target="T:System.Drawing.Drawing2D.Matrix" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.aspx"><font color="#0033cc">Matrix</font></a></span> 对象时，只需指定前两列中的 6 个数。<span class="code"><font face="新宋体">Matrix myMatrix = new Matrix(0, 1, -1, 0, 3, 4)</font></span> 语句构造上面图形中显示的矩阵。 </font></p>
+</div>
+<div class="MTPS_CollapsibleRegion">
+<div class="CollapseRegionLink"><font size="3"><img class="LibC_o" style="border-width: 0px; vertical-align: middle;" src="matrix-graphic_files/clear.gif"> 复合变换 </font></div>
+<div class="MTPS_CollapsibleSection" style="display: block; overflow: visible; width: auto; height: auto;">
+<div class="MTPS_CollapsibleSection" style="border: medium none; display: block;"><a name="sectionToggle0"></a>
+<p><font size="3">复合变换是一个接一个的变换序列。请考虑下面列表中的矩阵和变换：</font></p>
+<div class="caption"> </div>
+<div class="tableSection">
+<table class="FCK__ShowTableBorders" width="50%" frame="lhs">
+    <tbody>
+        <tr>
+            <td>
+            <p><font size="3">矩阵 A</font></p>
+            </td>
+            <td>
+            <p><font size="3">旋转 90 度</font></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><font size="3">矩阵 B</font></p>
+            </td>
+            <td>
+            <p><font size="3">在 x 方向上缩放 2 倍</font></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p><font size="3">矩阵 C</font></p>
+            </td>
+            <td>
+            <p><font size="3">在 y 方向上平移 3 个单位</font></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p><font size="3">如果从由矩阵 [2 1 1] 表示的点 (2, 1) 开始，并先后乘以 A、B、C，则点 (2, 1) 将按列出的顺序经历三种变换。</font></p>
+<p><font size="3">[2 1 1]ABC = [-2 5 1]</font></p>
+<p><font size="3">可以不将复合变换的三部分存储于三个独立的矩阵，而是一起乘以 A、B 和 C 来得到存储整个复合变换的单个的 3×3 矩阵。假定 ABC = D。则一个点乘以 D 得出的结果与一个点先后乘以 A、B、C 的结果相同。</font></p>
+<p><font size="3">[2 1 1]D = [-2 5 1]</font></p>
+<p><font size="3">下图显示了矩阵 A、B、C 和 D。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_005.gif"></span> </font>
+<p><font size="3">复合变换的矩阵可通过将几个单独的变换矩阵相乘而得到，这就意味着任何仿射变换的序列均可存储于单个的 <span target="T:System.Drawing.Drawing2D.Matrix" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.aspx"><font color="#0033cc">Matrix</font></a></span> 对象中。</font></p>
+<div class="alert">
+<table class="FCK__ShowTableBorders" width="100%">
+    <tbody>
+        <tr>
+            <th align="left"><img class="note" title="警告说明" src="matrix-graphic_files/8667dchf.gif"><strong>警告：</strong></th>
+        </tr>
+        <tr>
+            <td>
+            <p><font size="3">复合变换的顺序非常重要。一般说来，先旋转、再缩放、然后平移，与先缩放、再旋转、然后平移是不同的。同样，矩阵相乘的顺序也是重要的。一般说来，ABC 与 BAC 不同。</font></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p><span target="T:System.Drawing.Drawing2D.Matrix" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.aspx"><font color="#0033cc" size="3">Matrix</font></a></span><font size="3"> 类提供了几种构建复合变换的方法：<span target="Overload:System.Drawing.Drawing2D.Matrix.Multiply" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.multiply.aspx"><font color="#0033cc">Multiply</font></a></span>、<span target="Overload:System.Drawing.Drawing2D.Matrix.Rotate" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.rotate.aspx"><font color="#0033cc">Rotate</font></a></span>、<span target="Overload:System.Drawing.Drawing2D.Matrix.RotateAt" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.rotateat.aspx"><font color="#0033cc">RotateAt</font></a></span>、<span target="Overload:System.Drawing.Drawing2D.Matrix.Scale" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.scale.aspx"><font color="#0033cc">Scale</font></a></span>、<span target="Overload:System.Drawing.Drawing2D.Matrix.Shear" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.shear.aspx"><font color="#0033cc">Shear</font></a></span> 和 <span target="Overload:System.Drawing.Drawing2D.Matrix.Translate" sdata="cer"><a href="http://msdn.microsoft.com/zh-cn/library/system.drawing.drawing2d.matrix.translate.aspx"><font color="#0033cc">Translate</font></a></span>。下面的示例创建了复合变换（先旋转 30 度，再在 y 方向上缩放 2 倍，然后在 x 方向平移 5 个单位）的矩阵。 </font></p>
+<div name="snippetGroup">
+<div class="libCScode">
+<div class="CodeSnippetTitleBar">
+<div class="CodeDisplay"><font size="3">Visual Basic</font></div>
+<div class="CopyCodeButton"><a class="copyCode" href="http://hi.baidu.com/xdjsj/blog/item/:CopyCode%28%20ctl00_rs1_mainContentContainer_ctl23VisualBasic%20%29;"><font size="3"><img class="LibC_copy_off" src="matrix-graphic_files/clear.gif" align="middle" border="0" height="9"> 复制代码</font></a></div>
+</div>
+<div dir="ltr">
+<pre class="libCScode" style="word-wrap: break-word;" space="preserve"><font size="3"><span style="color: blue;">Dim</span> myMatrix <span style="color: blue;">As</span> <span style="color: blue;">New</span> Matrix()
+myMatrix.Rotate(30)
+myMatrix.Scale(1, 2, MatrixOrder.Append)
+myMatrix.Translate(5, 0, MatrixOrder.Append)
+
+</font></pre>
+</div>
+</div>
+<div class="libCScode">
+<div class="CodeSnippetTitleBar">
+<div class="CodeDisplay"><font size="3">C#</font></div>
+<div class="CopyCodeButton"><a class="copyCode" href="http://hi.baidu.com/xdjsj/blog/item/:CopyCode%28%20ctl00_rs1_mainContentContainer_ctl24CSharp%20%29;"><font size="3"><img class="LibC_copy_off" src="matrix-graphic_files/clear.gif" align="middle" border="0" height="9"> 复制代码</font></a></div>
+</div>
+<div dir="ltr">
+<pre class="libCScode" style="word-wrap: break-word;" space="preserve"><font size="3">Matrix myMatrix = <span style="color: blue;">new</span> Matrix();
+myMatrix.Rotate(30);
+myMatrix.Scale(1, 2, MatrixOrder.Append);
+myMatrix.Translate(5, 0, MatrixOrder.Append);
+
+</font></pre>
+</div>
+</div>
+</div>
+<p><font size="3">下图显示该矩阵。</font></p>
+<font size="3"><span class="media"><img alt="变换" src="matrix-graphic_files/8667dchf_003.gif"></span> </font></div>
+</div>
+</div></div></td></tr></tbody></table>
+
+<br>
+
+<div class="opt">
+
+<a href="http://hi.baidu.com/xdjsj/blog/category/%BD%F8%BD%D7%B1%E0%B3%CC" title="查看该分类中所有文章">类别：进阶编程</a>
+
+| <a href="#" onclick="addToShare(); return false;" target="_blank"><img src="matrix-graphic_files/share.gif" align="absbottom" border="0"></a>
+
+
+
+
+	
+
+	| <a title="将此文章添加到百度搜藏" href="http://cang.baidu.com/do/add" onclick="return addToFavor();" target="_blank">添加到搜藏</a>
+
+	
+    | <a title="将此文章分享到i贴吧" href="#" onclick="addToiTieba(); return false;" target="_blank">分享到i贴吧</a>
+
+
+    | 浏览(<span id="result">1071</span>)
+
+	| <a href="#send">评论</a>&nbsp;(0)
+
+
+
+<script language="javascript">
+
+/*<![CDATA[*/
+
+var pre = [true,'用InstallShield6.22制作带ODBC安装软件', '用InstallShield6.22制作带ODBC...','/xdjsj/blog/item/bcd49c24dc7756348744f9b3.html'];
+
+var post = [true,'进程间通信：剪贴板方式实现','进程间通信：剪贴板方式实现', '/xdjsj/blog/item/5da409271fa88f04908f9d5c.html'];
+
+if(pre[0] || post[0]){
+
+	document.write('<div style="height:5px;line-height:5px;">&nbsp;</div><div id="in_nav">');
+
+	if(pre[0]){
+
+		document.write('上一篇：<a href="' + pre[3] + '" title="' + pre[1] + '">' +  pre[2] + '</a>&nbsp;&nbsp;&nbsp;&nbsp;');
+
+	}
+
+	if(post[0]){
+
+		document.write('下一篇：<a href="' + post[3] + '" title="' + post[1] + '">' +  post[2] + '</a>');
+
+	}
+
+	document.write('</div>');
+
+}
+
+/*]]>*/
+
+</script><div style="height: 5px; line-height: 5px;">&nbsp;</div><div id="in_nav">上一篇：<a href="http://hi.baidu.com/xdjsj/blog/item/bcd49c24dc7756348744f9b3.html" title="用InstallShield6.22制作带ODBC安装软件">用InstallShield6.22制作带ODBC...</a>&nbsp;&nbsp;&nbsp;&nbsp;下一篇：<a href="http://hi.baidu.com/xdjsj/blog/item/5da409271fa88f04908f9d5c.html" title="进程间通信：剪贴板方式实现">进程间通信：剪贴板方式实现</a></div>
+
+
+
+</div>
+
+ 
+<div class="line">&nbsp;</div>
+<div id="share_user_list"><div class="tit" style="margin-bottom: 12px;">已有3人分享了这篇文章：</div><table width="100%"><tbody><tr><td class="user" align="center" valign="bottom" width="10%"><a class="ucard" target="_blank" pid="5d61726f73653067756eb903" href="http://hi.baidu.com/sys/checkuser/rose0gun/3"><img src="matrix-graphic_files/5d61726f73653067756eb903.jpg" style="display: block;" border="0"><div style="width: 75px; overflow: hidden; height: 18px;">rose0gun</div></a><a href="http://apps.hi.baidu.com/share/user/5d61726f73653067756eb903" target="_blank">Ta的转贴</a></td><td class="user" align="center" valign="bottom" width="10%"><a class="ucard" target="_blank" pid="133b435f5fc9fabbeee807" href="http://hi.baidu.com/sys/checkuser/C__%E7%94%9F%E6%B4%BB/3"><img src="matrix-graphic_files/133b435f5fc9fabbeee807.jpg" style="display: block;" border="0"><div style="width: 75px; overflow: hidden; height: 18px;">C__生活</div></a><a href="http://apps.hi.baidu.com/share/user/133b435f5fc9fabbeee807" target="_blank">Ta的转贴</a></td><td class="user" align="center" valign="bottom" width="10%"><a class="ucard" target="_blank" pid="8ba1616e646964616805" href="http://hi.baidu.com/sys/checkuser/andida/3"><img src="matrix-graphic_files/8ba1616e646964616805.jpg" style="display: block;" border="0"><div style="width: 75px; overflow: hidden; height: 18px;">andida</div></a><a href="http://apps.hi.baidu.com/share/user/8ba1616e646964616805" target="_blank">Ta的转贴</a></td><td width="100%"></td></tr></tbody></table></div>
+
+
+<div class="line">&nbsp;</div>
+
+
+
+
+
+
+
+    
+<style type="text/css">
+
+/*<![CDATA[*/
+
+#in_related_doc a { text-decoration:none; }
+
+/*]]>*/
+
+</style>
+
+<div id="in_related_doc"><div class="tit">相关文章：</div><table border="0" cellpadding="0" cellspacing="3"><tbody><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/5l2%5F/blog/item/236d8c1f59e7ebc6a786693b.html" target="_blank" title="UVA 4190 GCD Determinant  整除偏序,Mobius函数,矩阵变换">UVA 4190 GCD Determinant  整除...</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/huang279781545/blog/item/41f5bfd9fa3b572210df9b7f.html" target="_blank" title="Flex中Transform Matrix(变换矩阵)的应用(2)">Flex中Transform Matrix(变换矩...</a></td></tr><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/huang279781545/blog/item/2b7df82de0cd283a359bf77e.html" target="_blank" title="Flex中Transform Matrix(变换矩阵)的应用(1)">Flex中Transform Matrix(变换矩...</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/chinmoka/blog/item/6a5a5db03261e55908230263.html" target="_blank" title="从零开始学习OpenGL ES之七 – 变换和矩阵">从零开始学习OpenGL ES之七 – ...</a></td></tr><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/haibaraaizxq/blog/item/cb20119a15c4ec056e068cbf.html" target="_blank" title="DirectX SDK 2006学习笔记5——动画和矩阵变换">DirectX SDK 2006学习笔记5——...</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/hyyly520/blog/item/2767bd09c8aa84dc62d986ee.html" target="_blank" title="VB 用豪斯荷尔德变换法对矩阵进行QR分解">VB 用豪斯荷尔德变换法对矩阵进...</a></td></tr><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/%D0%A1%C6%BD339/blog/item/2a88d3a728ef8498d04358f2.html" target="_blank" title="关于法线变换矩阵的思考">关于法线变换矩阵的思考</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/tc22/blog/item/21c7bf196410f74842a9ad10.html" target="_blank" title="基本的2D图形变换&amp;变换矩阵推导">基本的2D图形变换&amp;变换矩阵推导</a></td></tr><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/hh20040410/blog/item/1e1c0cefaa3cbd1afcfa3c6a.html" target="_blank" title="[opengl]从零开始学习OpenGL ES之七 – 变换和矩阵 [下]">[opengl]从零开始学习OpenGL ES...</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/rocky%5Fly/blog/item/5f42d346b519b4056b63e5f8.html" target="_blank" title="OpenGL笔记之三:再思考矩阵与变换——变换发生后,视点在哪?">OpenGL笔记之三:再思考矩阵与变...</a></td></tr><tr><td colspan="4"><a target="_blank" href="http://hi.baidu.com/sys/search?pageno=1&amp;type=7&amp;sort=1&amp;word=%BC%C6%CB%E3%BB%FA%CD%BC%D0%CE%B1%E4%BB%BB%B5%C4%BE%D8%D5%F3%B1%ED%CA%BE%D0%CE%CA%BD&amp;item=184b7417fb98e3064a90a7be">更多&gt;&gt;</a></td></tr></tbody></table></div><div class="line">&nbsp;</div>
+
+<script language="javascript" type="text/javascript">
+
+/*<![CDATA[*/
+
+function HI_MOD_IN_RELATED_DOC_CALLBACK(arg){
+
+    if(arg.length <= 1) return false;
+
+    var hasMore = arg[0];
+
+    var D=function(A,B){A[A.length]=B;}
+
+    if(arg.length % 2 == 0) D(arg, ["","","",""]);
+
+
+
+    var html = ['<div id="in_related_doc"><div class="tit">相关文章：</div>'];
+
+    D(html, '<table cellpadding="0" cellspacing="3" border="0">');
+
+    for(var i = 1, j = arg.length; i < j; i += 2){
+
+        D(html, '<tr>');
+
+        D(html, '<td width="15px"><a style="font-size:25px" >&#8226;</a></td><td><a href="http://hi.baidu.com/' + arg[i][3] + '/blog/item/' + arg[i][2] + '.html" target="_blank" title="' + arg[i][0] + '">' + arg[i][1] + '</a>');
+
+        D(html, new Array(10).join('\u3000'));
+
+        D(html, '</td>');
+
+        if(arg[i + 1][0] != "")
+
+            D(html, '<td width="15px"><a style="font-size:25px" >&#8226;</a></td><td><a href="http://hi.baidu.com/' + arg[i + 1][3] + '/blog/item/' + arg[i + 1][2] + '.html" target="_blank" title="' + arg[i + 1][0] + '">' + arg[i + 1][1] + '</a></td>');
+
+        else
+
+            D(html, '<td>&nbsp;</td><td>&nbsp;</td>');
+
+        D(html, '</tr>');
+
+    }
+
+    if(hasMore) D(html, '<tr><td colspan="4"><a target="_blank" href="/sys/search?pageno=1&type=7&sort=1&word=%BC%C6%CB%E3%BB%FA%CD%BC%D0%CE%B1%E4%BB%BB%B5%C4%BE%D8%D5%F3%B1%ED%CA%BE%D0%CE%CA%BD&item=184b7417fb98e3064a90a7be">更多&gt;&gt;</a></td></tr>');
+
+    D(html, '</table></div><div class="line">&nbsp;</div>');
+
+
+
+    var div = document.getElementById('in_related_tmp');
+
+    if(div){
+
+        div.innerHTML = html.join('');
+
+        while(div.firstChild){
+
+            div.parentNode.insertBefore(div.firstChild, div);
+
+        }
+
+        div.parentNode.removeChild(div);
+
+    }
+
+	window.setTimeout("tracker_init('in_related_doc')",100);
+
+}
+
+
+
+if(RelatedDocData == -1){	// not supported xhr
+
+    var script = document.createElement('script');
+
+    script.type = 'text/javascript';
+
+    script.src = '/sys/search?type=8&word=%BC%C6%CB%E3%BB%FA%CD%BC%D0%CE%B1%E4%BB%BB%B5%C4%BE%D8%D5%F3%B1%ED%CA%BE%D0%CE%CA%BD&item=184b7417fb98e3064a90a7be&t=' + new Date().getTime();
+
+    document.getElementsByTagName('HEAD')[0].appendChild(script);
+
+}else if(RelatedDocData == null){
+
+	GetAndEval = true;
+
+}else{
+
+	eval(RelatedDocData);
+
+}
+
+
+
+/*]]>*/
+
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="in_reader">
+
+<div class="tit">最近读者：</div>
+
+
+
+<script>
+
+
+
+	var g_spAnnony=true;
+
+
+
+
+
+var g_read=[
+
+
+
+["c%5F%5F%C9%FA%BB%EE","133b435f5fc9fabbeee807","C__生活"],
+
+
+
+["andida591","8ba1616e646964616805","andida"],
+
+
+
+["scutwugang","2c5e777567616e67626c8809","wugangbl"],
+
+
+
+["54jingyu","263ccea7ccefc8ddd2bbc0c78b00","围田容一狼"],
+
+
+
+["xxw8393","e3ef78787738333933cf00","xxw8393"],
+
+
+
+["243108698","e4ee3234333130383639386505","243108698"],
+
+
+
+["hotpro","25c6686f7470726f6904","hotpro"],
+
+
+
+["liutao198792","ecc76c697574616f313938373932bb02","liutao198792"],
+
+
+
+{}
+
+];
+
+g_read.length=g_read.length-1;
+
+
+
+var _rh1="";
+
+var _rh2="";
+
+
+
+function wrreader(){
+
+	_rh1 += '<table width="100%" ><tr>';
+
+	_rh2+='<tr>';
+
+	if(g_spAnnony){
+
+		_rh1+='<td align="center" width="10%" ><img border="0" width="55" height="55" src="http://img.baidu.com/hi/img/portraitn.jpg"></td>';
+
+		_rh2+='<td>&nbsp;</td>';
+
+		if(g_read.length>0){
+
+			_rh1+='<td align="left" width="12%">';
+
+		}else{
+
+			_rh1+='<td align="left" width="100%">';
+
+		}
+
+		_rh1+='<a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u='+myref+'" target="_self" onclick="BdUtil.relogin(); return false;">登录</a>后，您就出现在这里。</td>';
+
+		_rh2+='<td>&nbsp;</td>'
+
+	}
+
+	if(g_read.length==0){
+
+		if(!g_spAnnony){
+
+			_rh1+='<td align=left width="100%">最近还没有登录用户看过这篇文章……</td>';
+
+			_rh2+='<td>&nbsp;</td>';
+
+		}
+
+	}else{
+
+		for(i=0,len=g_read.length;i<len;i++){
+
+			_rh1+='<td align="center" valign="bottom" width="10%" class="user"><a href="/'+g_read[i][0]+'" target="_blank" class="ucard" pid='+g_read[i][1]+'><img border="0" src="http://tx.bdimg.com/sys/portraitn/item/'+g_read[i][1]+'.jpg"></a></td>';
+
+			_rh2+='<td align="center" valign="top" class="user"><a href="/'+g_read[i][0]+'" target="_blank" class="ucard" pid="'+g_read[i][1]+'">'+g_read[i][2]+'</a></td>';
+
+		}
+
+	}
+
+	_rh1+='<td width="100%"></td></tr>';
+
+	_rh2+='<td></td></tr></table>';
+
+	document.write(_rh1+_rh2);
+
+}
+
+
+
+wrreader();
+
+</script><table width="100%"><tbody><tr><td align="center" width="10%"><img src="matrix-graphic_files/portraitn.jpg" border="0" height="55" width="55"></td><td align="left" width="12%"><a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http%3A%2F%2Fhi.baidu.com%2Fxdjsj%2Fblog%2Fitem%2F184b7417fb98e3064a90a7be%252Ehtml" target="_self" onclick="BdUtil.relogin(); return false;">登录</a>后，您就出现在这里。</td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/c%5F%5F%C9%FA%BB%EE" target="_blank" class="ucard" pid="133b435f5fc9fabbeee807"><img src="matrix-graphic_files/133b435f5fc9fabbeee807.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/andida591" target="_blank" class="ucard" pid="8ba1616e646964616805"><img src="matrix-graphic_files/8ba1616e646964616805.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/scutwugang" target="_blank" class="ucard" pid="2c5e777567616e67626c8809"><img src="matrix-graphic_files/2c5e777567616e67626c8809.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/54jingyu" target="_blank" class="ucard" pid="263ccea7ccefc8ddd2bbc0c78b00"><img src="matrix-graphic_files/263ccea7ccefc8ddd2bbc0c78b00.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/xxw8393" target="_blank" class="ucard" pid="e3ef78787738333933cf00"><img src="matrix-graphic_files/e3ef78787738333933cf00.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/243108698" target="_blank" class="ucard" pid="e4ee3234333130383639386505"><img src="matrix-graphic_files/e4ee3234333130383639386505.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/hotpro" target="_blank" class="ucard" pid="25c6686f7470726f6904"><img src="matrix-graphic_files/25c6686f7470726f6904.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/liutao198792" target="_blank" class="ucard" pid="ecc76c697574616f313938373932bb02"><img src="matrix-graphic_files/ecc76c697574616f313938373932bb02.jpg" border="0"></a></td><td width="100%"></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/c%5F%5F%C9%FA%BB%EE" target="_blank" class="ucard" pid="133b435f5fc9fabbeee807">C__生活</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/andida591" target="_blank" class="ucard" pid="8ba1616e646964616805">andida</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/scutwugang" target="_blank" class="ucard" pid="2c5e777567616e67626c8809">wugangbl</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/54jingyu" target="_blank" class="ucard" pid="263ccea7ccefc8ddd2bbc0c78b00">围田容一狼</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/xxw8393" target="_blank" class="ucard" pid="e3ef78787738333933cf00">xxw8393</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/243108698" target="_blank" class="ucard" pid="e4ee3234333130383639386505">243108698</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/hotpro" target="_blank" class="ucard" pid="25c6686f7470726f6904">hotpro</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/liutao198792" target="_blank" class="ucard" pid="ecc76c697574616f313938373932bb02">liutao198792</a></td><td></td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+
+<div class="line">&nbsp;</div>
+
+
+
+
+
+
+
+<script language="JavaScript">
+
+allkey=allkey+"7b1844dd747b16d98c102914_184b7417fb98e3064a90a7be_";
+
+</script>
+
+
+
+<div id="in_comment">
+
+<a name="comment"></a>
+
+<div class="tit">网友评论：</div>
+
+<script>
+
+function writecmt(type,id,cmtname,cmturl,portraitId){
+
+	var html1="";
+
+	cmturl=cmturl.replace("https://","http://");
+
+	if(type==1){
+
+			html1="<a href='"+cmturl+"' target='_blank' class='ucard' pid="+portraitId+"><img  border='0' src='http://tx.bdimg.com/sys/portraitn/item/"+portraitId+".jpg'><br>"+cmtname+"</a>";
+
+	}else{
+
+		if(cmtname=="" || cmtname=="匿名网友"){
+
+			if(cmturl==""){
+
+				html1="<a>匿名网友</a>";
+
+			}else{
+
+				html1="<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'>"+cmtname+"</a>";
+
+			}
+
+		}else{
+
+			if(cmturl==""){
+
+				html1="<div class='f14' style='display:inline'>网友:<a>"+cmtname+"</a></div>";
+
+			}else{
+
+				html1="<div class='f14' style='display:inline'>网友:<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'>"+cmtname+"</a></div>";
+
+			}
+
+		}
+
+	}
+
+	document.write(html1);
+
+}
+
+function filterCmtContent(n){
+
+	if(!BdBrowser.isIE){
+
+		var defaultfilter1='<span style="filter:glow(color=#000000,strength=2);height:0px;color:#000000">';
+
+		var defaultfilter2='<span style="height: 0px; color: rgb(0, 0, 0);">';
+
+		var commentDiv=document.getElementById(n);
+
+		var divs=commentDiv.getElementsByTagName('div');
+
+		var d,tmp;
+
+		for( var i=0,len=divs.length;i<len;i++){
+
+			d=divs[i];
+
+			if(d.getAttribute('name')=='cmtcontent'){
+
+				tmp=d.innerHTML;
+
+				tmp=tmp.replace(/<span style="filter:glow\(color=#([0-9a-z]{3,6}),strength=2\);height:0px;color:#([0-9a-z]{3,6})">/ig,defaultfilter1);
+
+				tmp=tmp.replace('<span style="height: 0px; color: rgb(255, 255, 255);">',defaultfilter2);
+
+				d.innerHTML=tmp;
+
+			}
+
+		}
+
+	}
+
+}
+
+
+
+</script>
+
+
+
+
+<div id="page"></div>
+
+
+
+</div>
+
+<script>filterCmtContent('in_comment');</script>
+
+
+
+
+
+
+<div id="in_send">
+
+<a name="send"></a>
+
+<form name="form1" id="popFormSubmit" action="/xdjsj/commit" method="post" onsubmit="return checkcmtform()">
+
+<input name="bdstoken" value="e422fea0d19c2d84f3c9bfdb6c7ef36b" type="hidden">
+
+<input name="ct" value="8" type="hidden">
+
+<input name="cm" value="1" type="hidden">
+
+<input name="spBlogID" value="184b7417fb98e3064a90a7be" type="hidden">
+
+<input value="http://hi.baidu.com/xdjsj/blog/item/184b7417fb98e3064a90a7be.html" name="spRefURL" id="spRefURL" type="hidden">
+
+<script>
+
+    document.getElementById("spRefURL").value = window.location.href;
+
+</script>
+
+<div class="tit">发表评论：</div>
+
+<table border="0" cellpadding="0" cellspacing="5" width="620">
+
+
+
+
+<tbody><tr id="2_err" style="display: none;">
+
+<td>&nbsp;</td>
+
+<td><div class="error" id="2_err_con"></div></td>
+
+</tr>
+
+
+
+<tr>
+
+<td class="f14" id="reTitle" valign="top">内　容：</td>
+
+<td>
+	<textarea name="spBlogCmtText" id="spBlogCmtText" style="width: 520px; height: 155px;" tabindex="3" onfocus="hidErr(3);" onclick="BdUtil.relogin(); return false;"></textarea>
+</td>
+
+</tr>
+
+<tr id="3_err" style="display: none;">
+
+<td>&nbsp;</td>
+
+<td><div class="error" id="3_err_con"></div></td>
+
+</tr>
+ 
+
+
+
+<tr>
+
+<td class="f14" valign="top">&nbsp;</td>
+
+<td class="f14" valign="top"><input id="btn_ok" name="btn_ok" onclick="BdUtil.relogin(); return false;" value="发表评论" tabindex="5" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="cancleReLink" onclick="canclereply(); return false;" style="display: none; font-size: 12px; color: rgb(102, 102, 102);">取消回复</a></td>
+
+</tr>
+
+</tbody></table>
+
+</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+
+</div>
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" height="8" width="100%">
+
+<tbody><tr><td class="modbl" width="7">&nbsp;</td>
+
+<td class="modbc">&nbsp;</td>
+
+<td class="modbr" width="7">&nbsp;</td>
+
+</tr></tbody></table>
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+<script src="matrix-graphic_files/swf.js"></script>
+<script src="matrix-graphic_files/fck_music_auto.js"></script>
+
+<script src="matrix-graphic_files/bgmusic.js" language="javascript"></script>
+<script language="javascript">
+function initBlogTextForFCK(){
+	//fck init music
+	if(window.Node){Node.prototype.replaceNode=function(Node){this.parentNode.replaceChild(Node,this);}}
+	var imgBox=document.getElementsByName('musicName');
+	var isAutoPlay=true;
+	for(var i=0,n=imgBox.length;i<n;i++){
+		var img=imgBox[i];
+		if(img.getAttribute('rel')){
+			var musicSrc=img.getAttribute('rel');
+			var musicDiv = document.createElement("SPAN");
+			var tmp=musicSrc.substr (musicSrc.indexOf('#')+1, 1);
+			var tmpAutoPlay=(tmp=='1');
+			if(isAutoPlay&&tmpAutoPlay){
+				isAutoPlay=false;
+				tmpAutoPlay=true;
+			}else{
+				tmpAutoPlay=false;
+			}
+			var shtml=creatbgmusic(musicSrc.substr(0,musicSrc.indexOf('#')).replace(/[\s><()'"]+/g,''),1,true,false,tmpAutoPlay,tmpAutoPlay,'FckMusicHelper');
+			shtml=shtml.replace('width=100%','width=200').replace('width="100%"','width=200 height=45');			img.replaceNode(musicDiv);
+			musicDiv.innerHTML=shtml;
+			i--;n--;
+		}
+	}
+		//fck init vote
+	!function(){
+		var vote = document.getElementsByName('FCK_VOTE');
+		for(var i=0,len=vote.length,item,rel=0,cdiv;i<len;i++){
+			item = vote[0];
+			rel = item.getAttribute('rel')|0;
+			if(rel){
+				cdiv = document.createElement('span');
+				item.parentNode.replaceChild(cdiv,item);
+				baidu.swf.create({
+					"id": "VOTE_FLASH_"+i,
+					"width" : "585",
+					"height": "100",
+					"ver"   : "9.0.0",
+					"wmode" : document.all ? "opaque" : "window",
+					"allowscriptaccess" : "always",
+					"url"   : "http://static.hi.baidu.com/apps/appvote/spaceVote.swf?vote_id="+rel
+				},cdiv)
+
+			}
+		}
+	}()
+	//document.getElementById('blog_text').style.display='';
+}
+
+</script>
+
+<script language="javascript">
+
+<!--
+
+var hstr="/xdjsj/brwstat?key1=1";
+
+document.write("<script src='"+hstr+"&key2="+allkey+"'><\/script>");
+
+//-->
+
+</script><script src="matrix-graphic_files/brwstat.html"></script>
+
+<br><center><div id="ft">&#169;2010 Baidu</div></center>
+<!-- user guide -->
+
+
+
+
+<script>
+
+if(document.getElementById("m_blog"))
+
+{
+
+	var imgarray = document.getElementById("m_blog").getElementsByTagName('img');
+
+	var imgw = document.getElementById("m_blog").offsetWidth;
+
+	imgw =imgw-40;
+
+    for(var i=0; i<imgarray.length; i++){
+    	if(imgarray[i].className=="blogimg" && imgarray[i].width>=imgw) {
+	    	imgarray[i].width=imgw;
+        }
+    }
+}
+
+
+
+// Fix ff bugs
+
+var blog_text = document.getElementById('blog_text');
+
+blog_text.innerHTML = blog_text.innerHTML.replace(/href\s*=\s*("|')?(\.\.\/\.\.\/)/gi,"href=$1../$2");
+
+
+initBlogTextForFCK();
+gotoreply();
+
+</script>
+
+</center>
+
+
+
+<!--inc_getmsgnum.html-->
+<img src="matrix-graphic_files/c.html" style="display: none;">
+<iframe id="submitiframe" name="submitiframe" src="matrix-graphic_files/blank.html" style="display: none;"></iframe>
+
+			
+
+
+<script type="text/javascript">
+/*<![CDATA[*/
+
+var SP = SP || {};
+if(!SP.mycard){
+    SP.mycard = new (function(){
+        var me = this;
+        var _cancleAction = Session.isDrag;  
+        var _list = [];
+        var _sourceLoaded = false;    
+        me.bind = function (_id){
+            if(_cancleAction){  //abort
+                return;
+            }
+            if(!_sourceLoaded){
+                _list.push(_id);
+            } else {
+                baidu.space.mycard.bind(_id);
+            }
+        }
+        me.init = function (_config){
+            _cancleAction = !!_config.cancle;
+        }
+        me.onSourceLoaded = function (){
+            _sourceLoaded = true;
+            baidu.space.mycard.init({portrait: Session.visitorPortrait});
+            for(var i=0,len=_list.length; i<len; i++){
+                baidu.space.mycard.bind(_list[i]);
+            }
+        }
+    })();
+    baidu.dom.ready(function(){
+        BdAjax.loadCSS('/ui/css/ucard/ucard.css?v=020507100.css');
+        BdAjax.loadJS('/ui/scripts/ucard/ucard.js?v=020507100.js');
+    });
+}
+SP.mycard.bind('m_blog');  
+/*]]>*/
+</script>
+
+
+	<script type="text/javascript" src="matrix-graphic_files/refer.js"></script>
+	
+<link rel="stylesheet" type="text/css" href="matrix-graphic_files/userset.css">
+<link rel="stylesheet" type="text/css" href="matrix-graphic_files/widget.css">
+
+<script type="text/javascript" src="matrix-graphic_files/default_user_suit.js"></script>
+
+<script type="text/javascript">
+//页面状态变量
+var Session = Session || {
+    spaceURL: "/xdjsj",
+    pageURL: "http://hi.baidu.com/xdjsj/blog/item/184b7417fb98e3064a90a7be%2Ehtml",    //当前访问的url
+    isHost: "",         // 是否是空间主人
+    userName: "xdjsj",   // 空间主人用户名
+    userNameEnc:    "xdjsj", 
+    visitorName:    "",
+    visitorURL: "/index.html",        // 
+    refer: "http://www.google.com.hk/search?hl=zh-CN&safe=strict&q=%E7%9F%A9%E9%98%B5+++%E5%9B%BE%E5%BD%A2%E5%8F%98%E6%8D%A2&aq=o&aqi=&aql=&oq=&gs_rfai=",
+    spBasicURL:"xdjsj",
+    spBasicURLEnc:"xdjsj"
+};
+</script>
+<script src="matrix-graphic_files/render.js" type="text/javascript"></script>
+<script type="text/javascript">
+baidu.dom.ready(function(){
+    if(typeof spBeautifyConfigData != 'undefined'){
+        var _installList = spBeautifyConfigData.list;
+    } else {
+        spBeautifyConfigData = {};
+        _installList = [];
+    }
+    spBeautifyConfigData.currentDate  = Math.round((new Date('2010/09/10')).getTime() / 1000);    
+    BeautifyWidget.init({timeStamp: spBeautifyConfigData.currentDate, env: 'sys'});
+    BeautifyWidget.render(_installList);
+});
+</script>
+
+
+
+<script type="text/javascript" src="matrix-graphic_files/auto.js"></script>
+<script>try{SCD.init("http://www.google.com.hk/search?hl=zh-CN&safe=strict&q=%E7%9F%A9%E9%98%B5+++%E5%9B%BE%E5%BD%A2%E5%8F%98%E6%8D%A2&aq=o&aqi=&aql=&oq=&gs_rfai=")}catch(e){}</script>
+
+
+
+
+<script>
+function buildSharedUserList(obj){
+	var count = obj.count || 0,i=0,html=[],len=obj.list.length,item;
+	if(count && len){
+		html[html.length] = '<div class="tit" style="margin-bottom:12px;">已有'+count+'人分享了这篇文章：</div>';
+		html[html.length] = '<table width="100%"><tbody><tr>'
+		for(;i<len;i++){
+			item=obj.list[i];
+			html[html.length] = '<td width="10%" valign="bottom" align="center" class="user"><a class="ucard" target="_blank" pid="'+item.portrait+'" href="http://hi.baidu.com/sys/checkuser/'+item.uname+'/3"><img border="0" src="http://tx.bdimg.com/sys/portraitn/item/'+item.portrait+'.jpg" style="display:block"><div style="width:75px;overflow:hidden;height:18px;">'+item.uname+'</div><a href="http://apps.hi.baidu.com/share/user/'+item.portrait+'" target="_blank">Ta的转贴</a></a></td>';
+		}
+		html[html.length] = '<td width="100%"></td></tr></tbody></table>';
+		G('share_user_list') && (G('share_user_list').innerHTML = html.join(''));
+		SP.mycard.bind('share_user_list'); 
+	}
+}
+var url = "http://apps.hi.baidu.com/share/getsourceshare?url=http://hi.baidu.com"+encodeURIComponent("/xdjsj")+"/blog/item/184b7417fb98e3064a90a7be.html&callback=buildSharedUserList&asyn=1&r="+Math.random();
+BdAjax.loadJS(url);
+</script>
+
+</body></html>

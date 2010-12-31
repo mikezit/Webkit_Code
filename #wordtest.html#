@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HEAD>
+  <TITLE>Anonymous text interrupted by a block</TITLE>
+  <STYLE type="text/css">
+  </STYLE>
+</HEAD>
+<BODY >
+<select name="menu">
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+  <option value="0" selected>(please select:)</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+  <option value="other">other, please specify:</option>
+
+
+
+</select>
+  <p>LONDON – BP is jettisoning CEO Tony Hayward, whose verbal blunders made the oil giant's image even worse as it struggled to contain the Gulf oil spill, and will assign him to a key job in Russia, a person familiar with the matter said Monday.</p>
+</BODY>
+
+
+
+
+
+
+
+	     +---------------+	    +-----------+	+--------------+
+	     | 	             |	    |           |	|              |
+	     |               |	    |           |	|              |
+	     |               +------+           +-------+              |
+	     |               |	    |           |	|              |
+	     +----------+----+	    +-----------+	+--------+-----+
+			|			    /--		 |
+			|			/---  		 |
+			|	           /----  --		 |
+			|	       /---   	    \-		 |
+			|	   /--- 	      \-	 |
+			|	---		        \	 |
+			|					 |
+			|					 |
+			|----------------------------------------+

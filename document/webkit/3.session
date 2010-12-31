@@ -1,0 +1,15 @@
+window_sizes 1590 822 310 1274 748 0
+diagrams
+  classdiagram_ref 128259 // rendering
+    861 840 100 4 0 0
+  classdiagram_ref 129411 // Element
+    870 702 100 4 0 0
+  active  classdiagram_ref 130563 // platform
+    1019 630 100 4 0 0
+end
+show_stereotypes
+selected sequencediagram_ref 130691 // SD
+open
+  classview_ref 129411 // platform
+end
+end

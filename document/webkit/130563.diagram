@@ -1,0 +1,58 @@
+format 66
+
+classcanvas 128003 class_ref 137091 // ScrollView
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 87 140 2005
+end
+classcanvas 128131 class_ref 137219 // ScrollViewAndroid
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 94 363 2000
+end
+classcanvas 128387 class_ref 137347 // Widget
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 65 18 2005
+end
+classcanvas 128515 class_ref 131843 // ScrollbarClient
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 227 29 2005
+end
+fragment 128899 "webkit"
+  xyzwh 9 2 2000 806 304
+end
+classcanvas 129027 class_ref 137475 // IntRect
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 362 243 2010
+end
+fragment 129795 "Android"
+  xyzwh 12 324 0 802 323
+end
+classcanvas 129923 class_ref 137603 // WebViewCore
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 466 413 2000
+end
+relationcanvas 128259 relation_ref 137347 // <generalisation>
+  from ref 128131 z 2001 to ref 128003
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128643 relation_ref 137475 // <generalisation>
+  from ref 128003 z 2001 to ref 128515
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128771 relation_ref 137603 // <generalisation>
+  from ref 128003 z 2001 to ref 128387
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129283 relation_ref 137859 // <directional aggregation>
+  from ref 128131 z 2011 to ref 129027
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130051 relation_ref 137987 // <directional aggregation>
+  from ref 128131 z 2001 to ref 129923
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

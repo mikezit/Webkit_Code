@@ -1,0 +1,7 @@
+对应 overflow 为默认值的情况(visible)
+    开始的时候一个renderbox(A)的over flow中的LayoutOverflow和VisualOverflow都是一样的，都等于
+    这个box的大小。当解析这个box的里面的renderobject的时候，会调用addLayoutOverflow和addVisualOverflow
+    把这renderobject的大小超出的部分融合到enderbox的over flow 的LayoutOverflow和VisualOverflow中去.
+    完成后renderbox(A)的over flow就是可以现实整个对象的大小.
+    这个过程会递归的向box A的containing box传递.直到到达body对应的box为止
+		 
